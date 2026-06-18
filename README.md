@@ -65,7 +65,7 @@ This project was created to:
 lib/
 ├── main.dart
 ├── animations/
-├── screens/
+├── pages/
 ├── widgets/
 └── utils/
 ```
