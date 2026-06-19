@@ -8,6 +8,8 @@ class HomePage extends StatefulWidget {
 }
 
 bool isfirst = false;
+double fontsize = 15;
+Color color = Colors.green;
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -37,10 +39,17 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(height: 15),
+          AnimatedDefaultTextStyle(
+            child: Text("Route"),
+            style: TextStyle(fontSize: fontsize, color: color),
+            duration: Duration(seconds: 2),
+          ),
           ElevatedButton(
             onPressed: () {
               setState(() {
                 isfirst = !isfirst;
+                fontsize = 50;
+                color = Colors.lightGreenAccent;
               });
             },
             child: Text("Animate"),
