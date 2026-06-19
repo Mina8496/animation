@@ -7,7 +7,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-double opacity = 0;
+bool isfirst = false;
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -19,17 +19,28 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: AnimatedOpacity(
+            child: AnimatedCrossFade(
+              firstChild: Container(
+                width: 150,
+                height: 150,
+                color: Colors.blue,
+              ),
+              secondChild: Container(
+                width: 250,
+                height: 250,
+                color: Colors.red,
+              ),
+              crossFadeState: isfirst
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
               duration: Duration(seconds: 2),
-              opacity: opacity,
-              child: Container(width: 150, height: 150, color: Colors.blue),
             ),
           ),
           SizedBox(height: 15),
           ElevatedButton(
             onPressed: () {
               setState(() {
-                opacity = 0.1;
+                isfirst = !isfirst;
               });
             },
             child: Text("Animate"),
