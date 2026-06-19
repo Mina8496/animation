@@ -7,7 +7,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-double scale = 0;
+double opacity = 0;
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -19,8 +19,9 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Transform.scale(
-              scale: scale,
+            child: AnimatedOpacity(
+              duration: Duration(seconds: 2),
+              opacity: opacity,
               child: Container(width: 150, height: 150, color: Colors.blue),
             ),
           ),
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () {
               setState(() {
-                scale++;
+                opacity = 0.1;
               });
             },
             child: Text("Animate"),
